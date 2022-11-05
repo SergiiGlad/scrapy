@@ -31,7 +31,7 @@ class SpiderkubeconSpider(scrapy.Spider):
         company_level = response.xpath('//*[contains(@href,"company/")]/text()').extract()
 
         # if link has file uploaded
-        if len(link) != 0:
+        if len(link):
             filename = unquote(os.path.basename(link[0]))
             print(self.num)
             print(name[0].rstrip())
@@ -41,7 +41,7 @@ class SpiderkubeconSpider(scrapy.Spider):
             print(link)
             print(filename)
             self.num += 1
-            if self.file_download :
+            if self.file_download:
                 opener = URLopener()
                 opener.addheaders = [('User-Agent', 'MyApp/1.0')]
                 install_opener(opener)
