@@ -13,7 +13,7 @@ class SpiderkubeconSpider(scrapy.Spider):
     file_download = False
 
     def start_requests(self):
-        return [Request(url='https://kccncna2022.sched.com/?iframe=no',callback=self.parse)]
+        return [Request(url=self.start_urls[0],callback=self.parse)]
 
     def parse(self, response):
         events=response.xpath('//*[contains(@href,"event/")]/@href').extract()
